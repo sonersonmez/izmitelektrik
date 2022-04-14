@@ -13,4 +13,8 @@ class Reference extends Model
     {
         return $this->hasMany(Image::class, 'imageable_id', 'id');
     }
+
+    public function categories(){
+        return $this->morphToMany(Category::class, 'categoriables');
+    }
 }

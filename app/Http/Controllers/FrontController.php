@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Post;
@@ -68,5 +69,17 @@ class FrontController extends Controller
         $contact->save();
 
         return view('front.index');
+    }
+
+    public function projects(){
+        $categories = Category::all();
+        $references = Reference::all();
+        
+        return view('front.projects', compact('categories', 'references'));
+    }
+
+    public function projectDetail($id){
+        $reference = Reference::find($id);
+        return view('front.projectDetail', compact('reference'));
     }
 }

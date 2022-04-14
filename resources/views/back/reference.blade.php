@@ -25,19 +25,15 @@
                                 <th>Başlık</th>
                                 <th>İçerik</th>
                                 <th>Aktif mi?</th>
+                                <th>Kategorileri</th>
                                 <th>Gönderilme Tarihi</th>
                                 <th>Güncelle</th>
-                                <th>Sil</th>
-                                
+                                <th>Sil</th>  
                             </tr>
                         </thead>
-                        
                         <tbody>
                            @foreach ($references as $reference)
-                               
-                         
-                           
-                            <tr>
+                             <tr>
                                 <td>{{$reference->title}}</td>
                                 <td>{{Str::limit($reference->content, 100, $end = '...')}}</td>
                               
@@ -50,8 +46,12 @@
                                 <i class="btn-warning btn-circle  fas fa-solid fa-eye-slash"></i>
                             </td>
                                @endif
-
-                               
+                             
+                            @foreach ($reference->categories->chunk(1) as $chunk)
+                             @foreach ($chunk as $referenceCategory)
+                                <td>{{$referenceCategory->name}}</td>
+                             @endforeach
+                            @endforeach
                                 @if($reference->created_at != null)
                                 <td>{{$reference->created_at}}</td>
                                 @else

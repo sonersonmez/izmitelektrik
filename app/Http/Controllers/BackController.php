@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoriable;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Reference;
@@ -123,12 +125,14 @@ class BackController extends Controller
 
     public function addReference()
     {
-        return view('back.addReference');
+        $categories = Category::all();
+        return view('back.addReference', compact('categories'));
     }
 
     public function saveReference(Request $request)
     {
-
+       
+        
         $reference = new Reference;
 
         $reference->title = $request->referenceTitle;
@@ -147,6 +151,17 @@ class BackController extends Controller
         $image->image_url = $request->referenceImage;
         $image->save();
 
+       $newCategories = $request->input('categories');
+        foreach($newCategories as $category){
+            $categoriable = new Categoriable;
+            $categoriable->category_id = $category;
+            $categoriable->categoriable_id = $lastReference->id;
+            $categoriable->categoriables_type = 'App\Models\Reference';
+            $categoriable->created_at = $currentTime;
+            $categoriable->save();
+        }
+       
+        
 
         $references = Reference::all();
         $data = array(
@@ -204,5 +219,13 @@ class BackController extends Controller
 
         );
         return view('back.reference')->with($data);
+    }
+
+    public function categories(){
+        return view('back.categories');
+    }
+
+    public function contact(){
+        return view('back.contact');
     }
 }

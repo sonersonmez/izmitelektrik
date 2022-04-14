@@ -31,6 +31,8 @@ Route::get('/references', [FrontController::class, 'references']);
 Route::get('/references/{id}', [FrontController::class, 'referenceDetail']);
 Route::get('/contact', [FrontController::class, 'contact']);
 Route::post('/contact/save', [FrontController::class, 'saveContact']);
+Route::get('/projects', [FrontController::class, 'projects']);
+Route::get('/project/{id}', [FrontController::class, 'projectDetail']);
 
 // BACKEND
 
@@ -52,3 +54,9 @@ Route::post('back/reference/save', [BackController::class, 'saveReference']);
 Route::get('back/reference/update/{id}', [BackController::class, 'editReference']);
 Route::post('back/reference/update/save', [BackController::class, 'updateReference']);
 Route::delete('back/reference/delete/{id}', [BackController::class, 'deleteReference']);
+
+        //CATEGORIES
+Route::get('/back/categories', [BackController::class, 'categories']);
+
+        //CONTACT
+Route::get('/back/contact', [BackController::class, 'contact']);

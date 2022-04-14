@@ -81,6 +81,16 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Referanslar</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/back/categories')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Kategoriler</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/back/contact')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>İletişim</span></a>
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
