@@ -47,11 +47,12 @@
                             </td>
                                @endif
                              
-                            @foreach ($reference->categories->chunk(1) as $chunk)
-                             @foreach ($chunk as $referenceCategory)
-                                <td>{{$referenceCategory->name}}</td>
+                               
+                            @foreach ($reference->categories as $referenceCategories)
+                            <td>{{$referenceCategories->name}}</td>
                              @endforeach
-                            @endforeach
+
+
                                 @if($reference->created_at != null)
                                 <td>{{$reference->created_at}}</td>
                                 @else

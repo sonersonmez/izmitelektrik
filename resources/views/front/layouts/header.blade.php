@@ -126,23 +126,23 @@
                 
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
-                      <li class="nav-item"><a class="nav-link" href="#">Anasayfa</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{url('/home')}}">Anasayfa</a></li>
 
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Şirketimiz<i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Hakkında</a></li>
-                            <li><a href="#">Teknik Personel</a></li>
-                            <li><a href="#">Referanslar</a></li>
-                            <li><a href="#">SSS</a></li>
-                            <li><a href="#">Fiyatlandırma</a></li>
+                            <li><a href="{{url('/about')}}">Hakkında</a></li>
+                            <li><a href="{{url('/team')}}">Teknik Personel</a></li>
+                            <li><a href="{{url('/references')}}">Referanslar</a></li>
+                            <li><a href="{{url('/faq')}}">SSS</a></li>
+                            <li><a href="{{url('/pricing')}}">Fiyatlandırma</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projelerimiz <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Tüm Projelerimiz</a></li>
+                            <li><a href="{{url('/projects')}}">Tüm Projelerimiz</a></li>
                             <li><a href="#">Proje Detay</a></li>
                           </ul>
                       </li>
@@ -172,7 +172,7 @@
                       </li>
               
                       <li class="nav-item dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
+                          <a href="{{url('/blog')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Blog Sol Sidebar</a></li>
                             <li><a href="#">Blog Sağ Sidebar</a></li>
@@ -180,7 +180,7 @@
                           </ul>
                       </li>
               
-                      <li class="nav-item"><a class="nav-link" href="#">İletişim</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}">İletişim</a></li>
                     </ul>
                 </div>
               </nav>

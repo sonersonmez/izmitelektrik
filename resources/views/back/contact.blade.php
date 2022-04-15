@@ -19,25 +19,35 @@
                                     <thead>
                                         <tr>
                                             <th>Gönderen</th>
-                                            <th>Mesaj</th>
-                                            <th>Telefon No</th>
                                             <th>Eposta</th>
+                                            <th>Telefon No</th>
+                                            <th>Konu</th>
+                                            <th>Mesaj</th>
+                                            
+                                            
                                             <th>Gönderilme Tarihi</th>
                                             <th>Durumu</th>
                                         </tr>
                                     </thead>
-                                    
+                                    @foreach ($contacts as $contact)
+                                        
+                                   
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>Görüldü</td>
+                                            <td>{{$contact->name}}</td>
+                                            <td>{{$contact->email}}</td>
+                                            <td>{{$contact->phone_number}}</td>
+                                            <td>{{$contact->subject}}</td>
+                                            <td>{{$contact->message}}</td>
+                                            <td>{{$contact->created_at}}</td>
+                                            @foreach ($contact->status as $contactStatus)
+                                            <td>{{$contactStatus->name}}</td>
+                                            @endforeach
+                                            
                                         </tr>
                                    
                                     </tbody>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>

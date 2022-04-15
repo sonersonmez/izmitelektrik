@@ -25,7 +25,9 @@ Route::get('/api/getContacts', [ApiController::class, 'getContacts']);
 
 // FRONTEND
 Route::get('/home', [FrontController::class, 'index']);
-Route::get('blog', [FrontController::class, ('blog')]);
+Route::get('/about', [FrontController::class, 'about']);
+Route::get('/faq', [FrontController::class, 'faq']);
+Route::get('/blog', [FrontController::class, ('blog')]);
 Route::get('/blog/{id}', [FrontController::class, 'blogDetail']);
 Route::get('/references', [FrontController::class, 'references']);
 Route::get('/references/{id}', [FrontController::class, 'referenceDetail']);

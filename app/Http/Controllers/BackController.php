@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoriable;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Reference;
@@ -226,6 +227,7 @@ class BackController extends Controller
     }
 
     public function contact(){
-        return view('back.contact');
+        $contacts = Contact::all();
+        return view('back.contact', compact('contacts'));
     }
 }

@@ -17,4 +17,8 @@ class Reference extends Model
     public function categories(){
         return $this->morphToMany(Category::class, 'categoriables');
     }
+
+    public function tags(){
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 }

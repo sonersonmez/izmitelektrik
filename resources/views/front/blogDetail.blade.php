@@ -1,157 +1,167 @@
 @extends('front.layouts.master')
 @section('content')
 
-    
-
-     <!-- Page content-->
-     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <!-- Post content-->
-                <article>
-                    <!-- Post header-->
-                    <header class="mb-4">
-                        <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
-                        <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Yayınlanma Tarihi: {{$post->created_at}}</div>
-                        <!-- Post categories-->
-                        <!--
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-                        -->
-                    </header>
-                    <!-- Preview image figure-->
-                    <br><br><br><br>
-                    <figure class="mb-4">
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                @foreach( $post->images as $postImage )
-                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                    <img width="300" height="250" class="d-block img-fluid" src="{{ $postImage->image_url }}" alt="{{ $post->title }}">
-                                       
-                                </div>
-                             @endforeach`
-                            </div>
-        
-                           
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="false"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="false"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                          </div>
-                      
-                    <!-- Post content-->
-                    <section class="mb-5">
-                        <p class="fs-5 mb-4">{{$post->content}}</p>
-                    </section>
-                </article>
-
-                <!-- Comments section-->
-                    <!--
-                <section class="mb-5">
-                    <div class="card bg-light">
-                        <div class="card-body">
-                            -->
-                            <!-- Comment form-->
-                           <!--<form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>--> 
-                            <!-- Comment with nested comments-->
-                      <!--  <div class="d-flex mb-4">--> 
-                                <!-- Parent comment-->
-<!--
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                <div class="ms-3">
-                                    <div class="fw-bold">Commenter Name</div>
-                                    If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                --> 
-                                    <!-- Child comment 1-->
-                                    <!--
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">Commenter Name</div>
-                                            And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                        </div>
-                                    </div>
-                                --> 
-                                    <!-- Child comment 2-->
-                                    <!--
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">Commenter Name</div>
-                                            When you put money directly to a problem, it makes a good headline.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        --> 
-                            <!-- Single comment-->
-                            <!--
-                            <div class="d-flex">
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                <div class="ms-3">
-                                    <div class="fw-bold">Commenter Name</div>
-                                    When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                                </div>
-                            </div>--> 
-                        </div>
-                    </div>
-                </section>
+<div id="banner-area" class="banner-area" style="background-image:url({{asset('frontend/')}}/images/banner/banner1.jpg)">
+    <div class="banner-text">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-heading">
+                  <h1 class="banner-title">News</h1>
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>
+                      </ol>
+                  </nav>
+                </div>
+            </div><!-- Col end -->
+          </div><!-- Row end -->
+      </div><!-- Container end -->
+    </div><!-- Banner text end -->
+  </div><!-- Banner area end --> 
+  
+  <section id="main-container" class="main-container">
+    <div class="container">
+      <div class="row">
+  
+        <div class="col-lg-8 mb-5 mb-lg-0">
+  
+          <div class="post-content post-single">
+            <div class="post-media post-image">
+             
+                       
+             @foreach ($post->images as $postImages)
+                 
+            
+              <img loading="lazy" src="{{$postImages->image_url}}" class="img-fluid" alt="post-image">
+              @endforeach
             </div>
-            <!-- Side widgets-->
-            <!--<div class="col-lg-4">-->
-                <!-- Search widget-->
-                <!--
-                <div class="card mb-4">
-                    <div class="card-header">Search</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                        </div>
-                    </div>
+  
+            <div class="post-body">
+              <div class="entry-header">
+                <div class="post-meta">
+                  <span class="post-author">
+                    <i class="far fa-user"></i><a href="#">Soner Sönmez</a>
+                  </span>
+                  <span class="post-cat">
+                    <i class="far fa-folder-open"></i><a href="#">Blog</a>
+                  </span>
+                  <span class="post-meta-date"><i class="far fa-calendar"></i>{{$post->created_at}}</span>
+                  
                 </div>
-                -->
-                <!-- Categories widget-->
-                <!--
-                <div class="card mb-4">
-                    <div class="card-header">Categories</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Web Design</a></li>
-                                    <li><a href="#!">HTML</a></li>
-                                    <li><a href="#!">Freebies</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">JavaScript</a></li>
-                                    <li><a href="#!">CSS</a></li>
-                                    <li><a href="#!">Tutorials</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="entry-title">
+                  {{$post->title}}
+                </h2>
+              </div><!-- header end -->
+  
+              <div class="entry-content">
+                {{$post->content}}
+              </div>
+  
+              <div class="tags-area d-flex align-items-center justify-content-between">
+                <div class="post-tags">
+                    @foreach ($post->categories as $postCategories)
+                    <a href="#">{{$postCategories->name}}</a>
+                    @endforeach
+                  
+                  
                 </div>
-                -->
-                <!-- Side widget-->
-                <!--
-                <div class="card mb-4">
-                    <div class="card-header">Side Widget</div>
-                    <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                <div class="share-items">
+                  <ul class="post-social-icons list-unstyled">
+                    <li class="social-icons-head">Paylaş:</li>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                  </ul>
                 </div>
-            </div>--> 
-        </div>
-    </div>
-
+              </div>
+  
+            </div><!-- post-body end -->
+          </div><!-- post content end -->
+  
+          <div class="author-box d-nlock d-sm-flex">
+            <div class="author-img mb-4 mb-md-0">
+              <img loading="lazy" src="{{asset('frontend/')}}/  images/news/avator1.png" alt="author">
+            </div>
+            <div class="author-info">
+              <h3>Soner Sönmez<span>Teknisyen</span></h3>
+              <p class="mb-2">Yazılım, elektronik ve elektriğe hevesli daimi amatör.</p>
+              <p class="author-url mb-0">Website: <span><a href="#">http://www.izmitelektrik.com</a></span></p>
+  
+            </div>
+          </div> <!-- Author box end -->
+  
+         
+        </div><!-- Content Col end -->
+  
+        <div class="col-lg-4">
+  
+          <div class="sidebar sidebar-right">
+            <div class="widget recent-posts">
+              <h3 class="widget-title">Son Yazılar</h3>
+              <ul class="list-unstyled">
+               
+                @foreach ($allPosts as $post)
+               
+                <li class="d-flex align-items-center">
+                  <div class="posts-thumb">
+                      
+                      @foreach ($post->images as $postImage)
+                          <a href="#"><img loading="lazy" alt="img" src="{{$postImage->image_url}}"></a>
+                      @endforeach
+                      
+                      
+                  </div>
+                  <div class="post-info">
+                    <h4 class="entry-title">
+                      <a href="#">{{$post->title}}</a>
+                    </h4>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
+  
+            </div><!-- Recent post end -->
+          
+                
+            
+            <div class="widget">
+              <h3 class="widget-title">Kategoriler</h3>
+              <ul class="arrow nav nav-tabs">
+                @foreach ($categories as $category)
+                <li><a href="#">{{$category->name}}</a></li>
+                @endforeach
+              </ul>
+            </div><!-- Categories end -->
+            
+           
+  
+            <div class="widget widget-tags">
+              <h3 class="widget-title">Etiketler </h3>
+  
+              <ul class="list-unstyled">
+                <li><a href="#">Construction</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Project</a></li>
+                <li><a href="#">Building</a></li>
+                <li><a href="#">Finance</a></li>
+                <li><a href="#">Safety</a></li>
+                <li><a href="#">Contracting</a></li>
+                <li><a href="#">Planning</a></li>
+              </ul>
+            </div><!-- Tags end -->
+  
+  
+          </div><!-- Sidebar end -->
+        </div><!-- Sidebar Col end -->
+  
+      </div><!-- Main row end -->
+  
+    </div><!-- Conatiner end -->
+  </section><!-- Main container end -->
+  
   
 @endsection
