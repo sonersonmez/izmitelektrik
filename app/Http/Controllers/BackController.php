@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Reference;
+use App\Models\Tag;
+use App\Models\Taggable;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -32,7 +34,9 @@ class BackController extends Controller
 
     public function add()
     {
-        return view('back.addPost');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('back.addPost', compact('categories', 'tags'));
     }
 
     public function save(Request $request)
@@ -53,6 +57,27 @@ class BackController extends Controller
         $image->imageable_id = $imageableId;
         $image->image_url = $request->postImage;
         $image->save();
+
+        $newCategories = $request->input('categories');
+        foreach($newCategories as $category){
+            $categoriable = new Categoriable;
+            $categoriable->category_id = $category;
+            $categoriable->categoriables_id = $lastPost->id;
+            $categoriable->categoriables_type = 'App\Models\Post';
+            $categoriable->created_at = $currentTime;
+            $categoriable->save();
+        }
+       
+        
+        $newTags = $request->input('tags');
+        foreach($newTags as $tag){
+            $taggable = New Taggable;
+            $taggable->tag_id = $tag;
+            $taggable->taggables_id = $lastPost->id;
+            $taggable->taggables_type = 'App\Models\Post';
+            $taggable->created_at = $currentTime;
+            $taggable->save();
+        }
 
         $posts = Post::all();
         $data = array(
@@ -127,7 +152,8 @@ class BackController extends Controller
     public function addReference()
     {
         $categories = Category::all();
-        return view('back.addReference', compact('categories'));
+        $tags = Tag::all();
+        return view('back.addReference', compact('categories', 'tags'));
     }
 
     public function saveReference(Request $request)
@@ -156,13 +182,22 @@ class BackController extends Controller
         foreach($newCategories as $category){
             $categoriable = new Categoriable;
             $categoriable->category_id = $category;
-            $categoriable->categoriable_id = $lastReference->id;
+            $categoriable->categoriables_id = $lastReference->id;
             $categoriable->categoriables_type = 'App\Models\Reference';
             $categoriable->created_at = $currentTime;
             $categoriable->save();
         }
        
         
+        $newTags = $request->input('tags');
+        foreach($newTags as $tag){
+            $taggable = New Taggable;
+            $taggable->tag_id = $tag;
+            $taggable->taggables_id = $lastReference->id;
+            $taggable->taggables_type = 'App\Models\Reference';
+            $taggable->created_at = $currentTime;
+            $taggable->save();
+        }
 
         $references = Reference::all();
         $data = array(
