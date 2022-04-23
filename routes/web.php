@@ -35,6 +35,7 @@ Route::get('/contact', [FrontController::class, 'contact']);
 Route::post('/contact/save', [FrontController::class, 'saveContact']);
 Route::get('/projects', [FrontController::class, 'projects']);
 Route::get('/project/{id}', [FrontController::class, 'projectDetail']);
+//servis sayfası
 
 // BACKEND
 
@@ -59,6 +60,9 @@ Route::delete('back/reference/delete/{id}', [BackController::class, 'deleteRefer
 
         //CATEGORIES
 Route::get('/back/categories', [BackController::class, 'categories']);
+Route::post('/back/categories/save', [BackController::class, 'saveCategory']);
 
         //CONTACT
 Route::get('/back/contact', [BackController::class, 'contact']);
+Route::get('/back/contact/edit/{id}', [BackController::class, 'editContact']);
+Route::post('back/contact/save', [BackController::class, 'saveContact']);

@@ -27,7 +27,7 @@
                                 <th>Başlık</th>
                                 <th>İçerik</th>
                                 <th>Aktif mi?</th>
-                                <th>Kategorileri</th>
+                                
                                 <th>Gönderilme Tarihi</th>
                                 <th>Güncelle</th>
                                 <th>Sil</th>
@@ -49,9 +49,7 @@
                                             <i class="btn-warning btn-circle  fas fa-solid fa-eye-slash"></i>
                                         </td>
                                     @endif
-                                    @foreach ($reference->categories as $referenceCategories)
-                                        <td>{{ $referenceCategories->name }}</td>
-                                    @endforeach
+                                    
                                     @if ($reference->created_at != null)
                                         <td>{{ $reference->created_at }}</td>
                                     @else

@@ -6,6 +6,7 @@
           <div class="col-lg-4 col-md-6 footer-widget footer-about">
             <h3 class="widget-title">Hakkımızda</h3>
             <img loading="lazy" class="footer-logo" src="{{asset('frontend/')}}/images/footer-logo.png" alt="Constra">
+            <p>İzmit Elektrik</p>
             <p>Kocaeli İlinin bir çok ilçesinde kaliteli, sürdürülebilir ve ucuz elektrik servisi hizmeti sunma amacıyla kurulan şirketimiz,
                 sizlerin de desteğiyle her geçen gün büyüyor. Takımımızın bir parçası olduğunuz için teşekkür ederiz.
             </p>
@@ -29,18 +30,18 @@
               Pazar günü ise internet sitemiz üzerinden form doldurarak bizlerle etkileşime geçebilirsiniz.
               <br><br> Pazartesi - Cuma: <span class="text-right">09:00 - 19:00 </span>
               <br> Cumartesi: <span class="text-right">10:00 - 17:00</span>
-              <br> Pazar günü ve tatil günleri: <span class="text-right">Çalışmamayı tercih ediyoruz ama acil bir durum olduğunda aramaktan çekinmeyiniz.</span>
+              <br> Pazar günü ve tatil günleri: <span class="text-right">10:00 - 17:00</span>
             </div>
           </div><!-- Col end -->
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
             <h3 class="widget-title">Servislerimiz</h3>
             <ul class="list-arrow">
-              <li><a href="service-single.html">Elektrik Hat Tesisat İşleri</a></li>
-              <li><a href="service-single.html">Kamera ve Güvenlik Sistemleri</a></li>
-              <li><a href="service-single.html">Keşif ve Arıza Tespiti</a></li>
-              <li><a href="service-single.html">Projeleriniz ve İşleriniz Hakkında Teknik Destek</a></li>
-              <li><a href="service-single.html">Ev, ofis ve şirket elektriği</a></li>
+              <li><a href="{{url('/contact')}}">Elektrik Hat Tesisat İşleri</a></li>
+              <li><a href="{{url('/contact')}}">Kamera ve Güvenlik Sistemleri</a></li>
+              <li><a href="{{url('/contact')}}">Keşif ve Arıza Tespiti</a></li>
+              <li><a href="{{url('/contact')}}">Projeleriniz ve İşleriniz Hakkında Teknik Destek</a></li>
+              <li><a href="{{url('/contact')}}">Ev, ofis ve şirket elektriği</a></li>
             </ul>
           </div><!-- Col end -->
         </div><!-- Row end -->
@@ -63,11 +64,10 @@
           <div class="col-md-12">
             <div class="footer-menu text-center">
               <ul class="list-unstyled mb-0">
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="team.html">Teknik Ekibimiz</a></li>
-                <li><a href="faq.html">SSS</a></li>
-                <li><a href="news-left-sidebar.html">Blog</a></li>
-                <li><a href="pricing.html">Fiyatlandırma</a></li>
+                <li><a href="{{url('/about')}}">Hakkımızda</a></li>
+                <li><a href="{{url('/faq')}}">SSS</a></li>
+                <li><a href="{{url('/blog')}}">Blog</a></li>
+                <li><a href="{{url('/contact')}}">Detaylı Bilgi</a></li>
               </ul>
             </div>
           </div>

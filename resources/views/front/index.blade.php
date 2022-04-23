@@ -10,8 +10,8 @@
                   <h2 class="slide-title" data-animation-in="slideInLeft">10+ Yıllık Tecrübe</h2>
                   <h3 class="slide-sub-title" data-animation-in="slideInRight">Elektrik</h3>
                   <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                      <a href="services.html" class="slider btn btn-primary">Servislerimiz</a>
-                      <a href="contact.html" class="slider btn btn-primary border">Şimdi İletişime Geçin!</a>
+                      <a href="#" class="slider btn btn-primary">Servislerimiz</a>
+                      <a href="{{url('/contact')}}" class="slider btn btn-primary border">Şimdi İletişime Geçin!</a>
                   </p>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                   <h3 class="slide-title" data-animation-in="fadeIn">Her İhtiyacınıza Karşılık</h3>
                   <h3 class="slide-sub-title" data-animation-in="slideInLeft">Hızlı İşçilik</h3>
                   <p data-animation-in="slideInRight">
-                      <a href="services.html" class="slider btn btn-primary border">Hizmetlerimiz</a>
+                      <a href="{{url('/references')}}" class="slider btn btn-primary border">Hizmetlerimiz</a>
                   </p>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                   <h3 class="slide-sub-title" data-animation-in="fadeIn">Profesyonel ve Özenli</h3>
                   <p class="slider-description lead" data-animation-in="slideInRight">Sorunlarınızın çözümü bir tık ileride.</p>
                   <div data-animation-in="slideInLeft">
-                      <a href="contact.html" class="slider btn btn-primary" aria-label="contact-with-us">Ücretsiz Teklif Al</a>
-                      <a href="about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Daha Fazla</a>
+                      <a href="{{url('/contact')}}" class="slider btn btn-primary" aria-label="contact-with-us">Ücretsiz Teklif Al</a>
+                      <a href="{{url('/about')}}" class="slider btn btn-primary border" aria-label="learn-more-about-us">Daha Fazla</a>
                   </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             </div><!-- Col end -->
             <div class="col-md-4 text-center text-md-right mt-3 mt-md-0">
                 <div class="call-to-action-btn">
-                  <a class="btn btn-dark" href="#">Fiyat Bilgisi Al</a>
+                  <a class="btn btn-dark" href="{{url('/contact')}}">Fiyat Bilgisi Al</a>
                 </div>
             </div><!-- col end -->
           </div><!-- row end -->
@@ -339,138 +339,55 @@
         </div>
       </div>
       <!--/ Title row end -->
-  
+    
+          
+      
       <div class="row">
         <div class="col-12">
           <div class="shuffle-btn-group">
             <label class="active" for="all">
               <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Hepsini Gör
             </label>
-            <label for="commercial">
-              <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Tesisat
+            @foreach ($categories as $category)
+            <label class="active" for="{{$category->name}}">
+              <input type="radio" name="shuffle-filter" id="{{$category->name}}" value="all" checked="checked">{{$category->name}}
             </label>
-            <label for="education">
-              <input type="radio" name="shuffle-filter" id="education" value="education">Yenileme
-            </label>
-            <label for="government">
-              <input type="radio" name="shuffle-filter" id="government" value="government">Arıza Tespit
-            </label>
-            <label for="infrastructure">
-              <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Memnun Müşteri
-            </label>
-            <label for="residential">
-              <input type="radio" name="shuffle-filter" id="residential" value="residential">Özenli
-            </label>
-            <label for="healthcare">
-              <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Güvenilir
-            </label>
+            @endforeach
           </div><!-- project filter end -->
-  
+         
   
           <div class="row shuffle-wrapper">
-            <div class="col-1 shuffle-sizer"></div>
-  
+            <div class="col-1 shuffle-sizer">
+
+            </div>
+            @foreach ($references as $reference)
             <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
               <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project1.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project1.jpg" alt="project-img">
+              
+              
+                <a class="gallery-popup" href="{{$reference->images[0]->image_url}}" aria-label="project-img">
+                  <img class="img-fluid" src="{{$reference->images[0]->image_url}}" alt="project-img">
                   <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                 </a>
+           
                 <div class="project-item-info">
                   <div class="project-item-info-content">
                     <h3 class="project-item-title">
-                      <a href="projects-single.html">Capital Teltway Building</a>
+                      <a href="projects-single.html">{{$reference->title}}</a>
                     </h3>
-                    <p class="project-cat">Commercial, Interiors</p>
+                    @foreach ($reference->categories as $referenceCategories)
+                        
+                    
+                    <p class="project-cat">{{$referenceCategories->name}}</p>
+                    @endforeach
                   </div>
                 </div>
+                
+                
               </div>
             </div><!-- shuffle item 1 end -->
-  
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
-              <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project2.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project2.jpg" alt="project-img">
-                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                </a>
-                <div class="project-item-info">
-                  <div class="project-item-info-content">
-                    <h3 class="project-item-title">
-                      <a href="projects-single.html">Ghum Touch Hospital</a>
-                    </h3>
-                    <p class="project-cat">Healthcare</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- shuffle item 2 end -->
-  
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;infrastructure&quot;,&quot;commercial&quot;]">
-              <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project3.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project3.jpg" alt="project-img">
-                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                </a>
-                <div class="project-item-info">
-                  <div class="project-item-info-content">
-                    <h3 class="project-item-title">
-                      <a href="projects-single.html">TNT East Facility</a>
-                    </h3>
-                    <p class="project-cat">Government</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- shuffle item 3 end -->
-  
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;education&quot;,&quot;infrastructure&quot;]">
-              <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project4.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project4.jpg" alt="project-img">
-                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                </a>
-                <div class="project-item-info">
-                  <div class="project-item-info-content">
-                    <h3 class="project-item-title">
-                      <a href="projects-single.html">Narriot Headquarters</a>
-                    </h3>
-                    <p class="project-cat">Infrastructure</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- shuffle item 4 end -->
-  
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;infrastructure&quot;,&quot;education&quot;]">
-              <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project5.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project5.jpg" alt="project-img">
-                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                </a>
-                <div class="project-item-info">
-                  <div class="project-item-info-content">
-                    <h3 class="project-item-title">
-                      <a href="projects-single.html">Kalas Metrorail</a>
-                    </h3>
-                    <p class="project-cat">Infrastructure</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- shuffle item 5 end -->
-  
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;residential&quot;]">
-              <div class="project-img-container">
-                <a class="gallery-popup" href="{{asset('frontend/')}}/images/projects/project6.jpg" aria-label="project-img">
-                  <img class="img-fluid" src="{{asset('frontend/')}}/images/projects/project6.jpg" alt="project-img">
-                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                </a>
-                <div class="project-item-info">
-                  <div class="project-item-info-content">
-                    <h3 class="project-item-title">
-                      <a href="projects-single.html">Ancraft Avenue House</a>
-                    </h3>
-                    <p class="project-cat">Residential</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- shuffle item 6 end -->
+            @endforeach
+
           </div><!-- shuffle end -->
         </div>
   
@@ -502,7 +419,7 @@
                         <img loading="lazy" class="testimonial-thumb" src="{{asset('frontend/')}}/images/clients/testimonial1.png" alt="testimonial">
                         <div class="quote-item-info">
                             <h3 class="quote-author">Necmettin K.</h3>
-                            <span class="quote-subtext">Ncity AVM G. Müdürü</span>
+                            <span class="quote-subtext">NCity AVM G. Müdürü</span>
                         </div>
                       </div>
                   </div><!-- Quote item end -->
@@ -641,76 +558,44 @@
       <div class="row text-center">
           <div class="col-12">
             <h2 class="section-title">Tartışılmaz Kalite</h2>
-            <h3 class="section-sub-title">Son Yapılan Projelerimizin Detayları</h3>
+            <h3 class="section-sub-title">Son Paylaştığımız Blog İçerikleri</h3>
           </div>
       </div>
       <!--/ Title row end -->
   
       <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
+
+        @foreach ($posts as $post)
+         <div class="col-lg-4 col-md-6 mb-4">
             <div class="latest-post">
                 <div class="latest-post-media">
+                  @foreach ($post->images as $postImages)
+                
                   <a href="news-single.html" class="latest-post-img">
-                      <img loading="lazy" class="img-fluid" src="{{asset('frontend/')}}/images/news/news1.jpg" alt="img">
+                      <img loading="lazy" class="img-fluid" src="{{$postImages->image_url}}" alt="img">
                   </a>
+                        
+                  @endforeach
                 </div>
                 <div class="post-body">
                   <h4 class="post-title">
-                      <a href="news-single.html" class="d-inline-block">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
+                      <a href="news-single.html" class="d-inline-block">{{$post->title}}</a>
                   </h4>
                   <div class="latest-post-meta">
                       <span class="post-item-date">
-                        <i class="fa fa-clock-o"></i> July 20, 2017
+                        <i class="fa fa-clock-o"></i> {{$post->created_at}}
                       </span>
                   </div>
                 </div>
             </div><!-- Latest post end -->
           </div><!-- 1st post col end -->
-  
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="latest-post">
-                <div class="latest-post-media">
-                  <a href="news-single.html" class="latest-post-img">
-                      <img loading="lazy" class="img-fluid" src="{{asset('frontend/')}}/images/news/news2.jpg" alt="img">
-                  </a>
-                </div>
-                <div class="post-body">
-                  <h4 class="post-title">
-                      <a href="news-single.html" class="d-inline-block">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
-                  </h4>
-                  <div class="latest-post-meta">
-                      <span class="post-item-date">
-                        <i class="fa fa-clock-o"></i> June 17, 2017
-                      </span>
-                  </div>
-                </div>
-            </div><!-- Latest post end -->
-          </div><!-- 2nd post col end -->
-  
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="latest-post">
-                <div class="latest-post-media">
-                  <a href="news-single.html" class="latest-post-img">
-                      <img loading="lazy" class="img-fluid" src="{{asset('frontend/')}}/images/news/news3.jpg" alt="img">
-                  </a>
-                </div>
-                <div class="post-body">
-                  <h4 class="post-title">
-                      <a href="news-single.html" class="d-inline-block">Silicon Bench and Cornike Begin Construction Solar Facilities</a>
-                  </h4>
-                  <div class="latest-post-meta">
-                      <span class="post-item-date">
-                        <i class="fa fa-clock-o"></i> Aug 13, 2017
-                      </span>
-                  </div>
-                </div>
-            </div><!-- Latest post end -->
-          </div><!-- 3rd post col end -->
+          @endforeach
+       
       </div>
       <!--/ Content row end -->
   
       <div class="general-btn text-center mt-4">
-          <a class="btn btn-primary" href="news-left-sidebar.html">Tüm Hizmetleri Göster</a>
+          <a class="btn btn-primary" href="news-left-sidebar.html">Tüm Blog'u Görüntüle</a>
       </div>
   
     </div>

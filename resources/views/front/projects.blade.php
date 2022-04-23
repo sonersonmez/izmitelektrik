@@ -27,8 +27,8 @@
         <div class="col-12">
           <div class="shuffle-btn-group">
             @foreach ($categories as $category)
-            <label class="active" for="{{$category->name}}">
-              <input type="radio" name="shuffle-filter" id="{{$category->name}}" value="{{$category->id}}" checked="checked">
+            <label class="active" for="{{$category->slug}}">
+              <input type="radio" name="shuffle-filter" id="{{$category->slug}}" value="{{$category->slug}}" checked="checked">
             {{$category->name}}
              </label>
             @endforeach
@@ -38,7 +38,8 @@
           <div class="row shuffle-wrapper">
             <div class="col-1 shuffle-sizer"></div>
             @foreach ($references as $reference)
-            <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
+           
+            <div class="col-lg-4 col-md-6 shuffle-item" data-groups='["{{implode('","',$reference->categories->pluck('slug')->toArray())}}"]'>
               <div class="project-img-container">
                 @foreach ($reference->images as $referenceImage)
                 <a class="gallery-popup" href="{{$referenceImage->image_url}}">

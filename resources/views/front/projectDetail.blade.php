@@ -11,7 +11,7 @@
                       <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Project</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Projects Single</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$reference->title}}</li>
                       </ol>
                   </nav>
                 </div>
@@ -27,16 +27,24 @@
       <div class="row">
         <div class="col-lg-8">
           <div id="page-slider" class="page-slider small-bg">
-              @foreach ($reference->images as $referenceImage)
+            @foreach ($reference->images as $referenceImage)
               <div class="item">
+               
                 <img loading="lazy" class="img-fluid" src="{{$referenceImage->image_url}}" alt="project-image" />
+                
               </div>
               @endforeach
+             
             
   
             
           </div><!-- Page slider end -->
+          <div class="col mt-4">
+            <h3>{{$reference->title}}</h3>
+            <p>{{$reference->content}}</p>
+          </div>
         </div><!-- Slider col end -->
+        
   
         <div class="col-lg-4 mt-5 mt-lg-0">
   
@@ -61,8 +69,11 @@
               <p class="project-info-content">2015</p>
             </li>
             <li>
-              <p class="project-info-label">Categories</p>
-              <p class="project-info-content">Commercial, Interiors</p>
+              <p class="project-info-label">Kategoriler</p>
+              @foreach ($reference->categories as $referenceCategories)
+              <p class="project-info-content">{{$referenceCategories->name}}</p>
+                 
+              @endforeach
             </li>
             <li>
               <p class="project-link">

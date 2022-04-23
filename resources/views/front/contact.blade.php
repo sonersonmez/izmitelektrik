@@ -76,7 +76,7 @@
       <div class="gap-60"></div>
   
       <div class="google-map">
-        <div id="map" class="map" data-latitude="40.7654264" data-longitude="29.9282987" data-marker="images/marker.png" data-marker-name="Constra"></div>
+        <div id="map" class="map" data-latitude="40.7654264" data-longitude="29.9282987" data-marker="{{asset('frontend/')}}/images/marker.png" data-marker-name="İzmit Elektrik"></div>
       </div>
   
       <div class="gap-40"></div>

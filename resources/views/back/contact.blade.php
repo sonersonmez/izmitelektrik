@@ -23,10 +23,10 @@
                                             <th>Telefon No</th>
                                             <th>Konu</th>
                                             <th>Mesaj</th>
-                                            
-                                            
                                             <th>Gönderilme Tarihi</th>
                                             <th>Durumu</th>
+                                            <th>Durum Düzenle</th>
+                                          
                                         </tr>
                                     </thead>
                                     @foreach ($contacts as $contact)
@@ -41,7 +41,17 @@
                                             <td>{{$contact->message}}</td>
                                             <td>{{$contact->created_at}}</td>
                                             @foreach ($contact->status as $contactStatus)
-                                            <td>{{$contactStatus->name}}</td>
+                                            <td>
+                                                {{$contactStatus->name}}
+                                            </td>
+                                            <td>
+                                               
+                                                <a href="{{url('/back/contact/edit/').'/'.$contact->id}}">
+                                                    <i class="text-light btn-info btn-circle fas fa-solid fa-marker"></i>
+                                                 </a>
+                                               
+                                            </td>
+                                            
                                             @endforeach
                                             
                                         </tr>

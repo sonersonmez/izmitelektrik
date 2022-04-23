@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Reference;
+use App\Models\Status;
+use App\Models\Statusable;
 use App\Models\Tag;
 use App\Models\Taggable;
 use Carbon\Carbon;
@@ -261,8 +263,47 @@ class BackController extends Controller
         return view('back.categories');
     }
 
+    public function saveCategory(Request $request){
+        $newCategory = $request->newCategory;
+        $category = new Category;
+        $category->name = $newCategory;
+        $category->save();
+        return view('back.categories');
+    }
+
     public function contact(){
         $contacts = Contact::all();
-        return view('back.contact', compact('contacts'));
+        $statuses = Status::all();
+        return view('back.contact', compact('contacts', 'statuses'));
+    }
+
+    public function editContact($contactId){
+      
+        $contact = Contact::find($contactId);
+        $statuses = Status::all();
+        
+        return view('back.editContact', compact('contact', 'statuses'));
+    }
+
+    public function saveContact(Request $request){
+        $updatedStatus = $request->updatedStatus;
+        
+        $statusable = Statusable::where('statusables_id', '=', $request->contactId)->first();
+        
+
+        if($updatedStatus == 'Yanıt Bekliyor'){
+            $statusable->status_id = 1;
+            $statusable->save();
+        }elseif($updatedStatus == 'Görüldü'){
+            $statusable->status_id = 2;
+            $statusable->save();
+        }else{
+            $statusable->status_id = 3;
+            $statusable->save();
+        }
+
+        $contacts = Contact::all();
+        $statuses = Status::all();
+        return view('back.contact', compact('contacts', 'statuses'));
     }
 }

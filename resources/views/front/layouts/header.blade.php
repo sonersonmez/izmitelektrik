@@ -15,7 +15,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="{{asset('frontend/')}}/images/favicon.png">
+  <link rel="icon" type="image/png" href="{{asset('frontend/')}}/images/header-logo.png">
 
   <!-- CSS
 ================================================== -->
@@ -51,16 +51,16 @@
               <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
                 <ul class="list-unstyled">
                     <li>
-                      <a title="Facebook" href="https://facebbok.com/themefisher.com">
+                      <a title="Facebook" href="#">
                           <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
                       </a>
-                      <a title="Twitter" href="https://twitter.com/themefisher.com">
+                      <a title="Twitter" href="#">
                           <span class="social-icon"><i class="fab fa-twitter"></i></span>
                       </a>
-                      <a title="Instagram" href="https://instagram.com/themefisher.com">
+                      <a title="Instagram" href="#">
                           <span class="social-icon"><i class="fab fa-instagram"></i></span>
                       </a>
-                      <a title="Linkdin" href="https://github.com/themefisher.com">
+                      <a title="Linkedin" href="#">
                           <span class="social-icon"><i class="fab fa-github"></i></span>
                       </a>
                     </li>
@@ -79,9 +79,15 @@
     <div class="container">
       <div class="logo-area">
           <div class="row align-items-center">
-            <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
-                <a class="d-block" href="#">
-                  <img loading="lazy" src="{{asset('frontend/')}}/images/logo.png" alt="Constra">
+            <div class=" col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0"> <!-- class="logo" in class -->
+                <a class="d-block" href="{{url('/home')}}">
+                  <div class="container">
+                  <div class="row">
+                    <div class="col-sm"><img loading="lazy" height="100" width="100" src="{{asset('frontend/')}}/images/header-logo.png" alt="İzmit Elektrik"></div>
+                  
+                    <h2>İzmit Elektrik</h2>
+                  </div>
+                </div>
                 </a>
             </div><!-- logo end -->
   
@@ -105,7 +111,7 @@
                   </li>
                   
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="#">Fiyat Teklifi Al</a>
+                    <a class="btn btn-primary" href="{{url('/contact')}}">Fiyat Teklifi Al</a>
                   </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
@@ -127,34 +133,42 @@
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
                       <li class="nav-item"><a class="nav-link" href="{{url('/home')}}">Anasayfa</a></li>
-
+                      <li class="nav-item"><a class="nav-link" href="{{url('/projects')}}">Projelerimiz</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{url('/references')}}">Referanslarımız</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{url('/blog')}}">Blog</a></li>
+                        
+                      <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Servislerimiz <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Tüm Servislerimiz</a></li>
+                          <li><a href="#">Servis Detay</a></li>
+                        </ul>
+                    </li>
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Şirketimiz<i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{{url('/about')}}">Hakkında</a></li>
-                            <li><a href="{{url('/team')}}">Teknik Personel</a></li>
+                           <!-- <li><a href="{{url('/team')}}">Teknik Personel</a></li> -->
                             <li><a href="{{url('/references')}}">Referanslar</a></li>
                             <li><a href="{{url('/faq')}}">SSS</a></li>
-                            <li><a href="{{url('/pricing')}}">Fiyatlandırma</a></li>
+                           <!-- <li><a href="{{url('/pricing')}}">Fiyatlandırma</a></li> -->
                           </ul>
                       </li>
+                   
+                      <!--
+                        <a href="{{url('/blog')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Blog Sol Sidebar</a></li>
+                          <li><a href="#">Blog Sağ Sidebar</a></li>
+                          <li><a href="#">Blog Detay</a></li>
+                        </ul>
+                    </li>-->
+                     
               
-                      <li class="nav-item dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projelerimiz <i class="fa fa-angle-down"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{url('/projects')}}">Tüm Projelerimiz</a></li>
-                            <li><a href="#">Proje Detay</a></li>
-                          </ul>
-                      </li>
-              
-                      <li class="nav-item dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Servislerimiz <i class="fa fa-angle-down"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Tüm Servislerimiz</a></li>
-                            <li><a href="#">Servis Detay</a></li>
-                          </ul>
-                      </li>
-              
+                      
+
+                     
+              <!-- FEATURES 
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
@@ -170,15 +184,8 @@
                             </li>
                           </ul>
                       </li>
-              
-                      <li class="nav-item dropdown">
-                          <a href="{{url('/blog')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Blog Sol Sidebar</a></li>
-                            <li><a href="#">Blog Sağ Sidebar</a></li>
-                            <li><a href="#">Blog Detay</a></li>
-                          </ul>
-                      </li>
+              -->
+                      
               
                       <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}">İletişim</a></li>
                     </ul>

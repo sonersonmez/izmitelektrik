@@ -18,12 +18,13 @@ class FrontController extends Controller
 {
     //
     public function index(){
-        return view('front.index');
+        $categories = Category::all();
+        $references = Reference::all();
+        $posts = Post::all();
+        return view('front.index', compact('categories', 'references', 'posts'));
     }
 
     public function blog(){
-
-
         $posts = Post::all();
         return view('front.blog', compact('posts'));
     }
