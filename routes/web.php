@@ -22,6 +22,9 @@ Route::get('/', function () {
 
 // API
 Route::get('/api/getContacts', [ApiController::class, 'getContacts']);
+Route::post('/api/post', [ApiController::class, 'postContact']);
+Route::put('/api/post/update/{id}', [ApiController::class, 'updateContactStatus']);
+Route::delete('/api/post/delete/{id}', [ApiController::class, 'deleteContact']);
 
 // FRONTEND
 Route::get('/home', [FrontController::class, 'index']);
